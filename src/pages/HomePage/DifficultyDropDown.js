@@ -1,14 +1,16 @@
 import React from 'react';
 import SearchableDropDown from '../../components/SearchableDropDown';
-import { difficulties } from '../../constants/difficulty';
+import { bossDifficulties } from '../../constants/bossDifficulties';
 
-const DifficultyDropDown = ({ selectedDifficulty, onDifficultyChange }) => {
+const DifficultyDropDown = ({ selectedBoss, selectedDifficulty, onDifficultyChange }) => {
+  const difficulties = bossDifficulties[selectedBoss] || []
+
   return (
     <SearchableDropDown
       label="Difficulty"
       value={selectedDifficulty}
       onChange={onDifficultyChange}
-      options={Object.keys(difficulties)}
+      options={difficulties}
     />
   );
 };
