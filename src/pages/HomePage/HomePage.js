@@ -21,7 +21,6 @@ const HomePage = () => {
 
   const handleValueChange = (key, value) => {
     setSelectedValues((prevValues) => {
-      // Reset 'map' if 'area' changes, and 'difficulty' if 'boss' changes.
       const newValues = {
         ...prevValues,
         [key]: value,
@@ -43,7 +42,6 @@ const HomePage = () => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
       bossing: event.target.checked,
-      // Reset values when switching between modes.
       area: '',
       map: '',
       difficulty: '',
@@ -72,6 +70,7 @@ const HomePage = () => {
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <DifficultyDropDown
+                selectedBoss={selectedValues.boss} // Pass selected boss as prop
                 selectedDifficulty={selectedValues.difficulty}
                 onDifficultyChange={(value) => handleValueChange('difficulty', value)}
               />
@@ -102,6 +101,7 @@ const HomePage = () => {
                 checked={selectedValues.lazy}
                 onChange={handleLazyChange}
                 color="primary"
+                disabled={selectedValues.bossing}
               />
             }
             label="Lazy Rotation?"
