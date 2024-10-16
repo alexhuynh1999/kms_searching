@@ -1,4 +1,3 @@
-// src/constants/classes.js
 export const classes = {
     Hero: '히어로',
     'Dark Knight': '다크나이트',
