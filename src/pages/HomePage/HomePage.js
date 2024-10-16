@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Grid, Checkbox, FormControlLabel } from '@mui/material';
+import { Box, Grid, Checkbox, FormControlLabel, Switch } from '@mui/material';
 import ClassDropDown from './ClassDropDown';
 import AreaDropDown from './AreaDropDown';
 import MapDropDown from './MapDropDown';
+import DifficultyDropDown from './DifficultyDropDown';
+import BossDropDown from './BossDropDown';
 import YouTubeLink from './YouTubeLink';
 import Banner from '../../components/Banner';
 
@@ -11,15 +13,23 @@ const HomePage = () => {
     class: '',
     area: '',
     map: '',
-    lazy: false  // Initial state for the checkbox
+    difficulty: '',
+    boss: '',
+    lazy: false,
+    bossing: false,
   });
 
   const handleValueChange = (key, value) => {
-    setSelectedValues((prevValues) => ({
-      ...prevValues,
-      [key]: value,
-      ...(key === 'area' ? { map: '' } : {}),
-    }));
+    setSelectedValues((prevValues) => {
+      // Reset 'map' if 'area' changes, and 'difficulty' if 'boss' changes.
+      const newValues = {
+        ...prevValues,
+        [key]: value,
+        ...(key === 'area' ? { map: '' } : {}),
+        ...(key === 'boss' ? { difficulty: '' } : {}),
+      };
+      return newValues;
+    });
   };
 
   const handleLazyChange = (event) => {
@@ -29,9 +39,21 @@ const HomePage = () => {
     }));
   };
 
+  const handleBossingChange = (event) => {
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      bossing: event.target.checked,
+      // Reset values when switching between modes.
+      area: '',
+      map: '',
+      difficulty: '',
+      boss: '',
+    }));
+  };
+
   return (
     <Box sx={{ p: 3, paddingTop: 'calc(2rem + 32px)' }}>
-      <Banner text={"MapleStory KMS Class Lookup"} />
+      <Banner text="MapleStory KMS Class Lookup" />
       <Grid container spacing={3} sx={{ mt: 3 }}>
         <Grid item xs={12} sm={6} md={4}>
           <ClassDropDown
@@ -39,19 +61,40 @@ const HomePage = () => {
             onClassChange={(value) => handleValueChange('class', value)}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <AreaDropDown
-            selectedArea={selectedValues.area}
-            onAreaChange={(value) => handleValueChange('area', value)}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <MapDropDown
-            selectedArea={selectedValues.area}
-            selectedMap={selectedValues.map}
-            onMapChange={(value) => handleValueChange('map', value)}
-          />
-        </Grid>
+
+        {selectedValues.bossing ? (
+          <>
+            <Grid item xs={12} sm={6} md={4}>
+              <BossDropDown
+                selectedBoss={selectedValues.boss}
+                onBossChange={(value) => handleValueChange('boss', value)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <DifficultyDropDown
+                selectedDifficulty={selectedValues.difficulty}
+                onDifficultyChange={(value) => handleValueChange('difficulty', value)}
+              />
+            </Grid>
+          </>
+        ) : (
+          <>
+            <Grid item xs={12} sm={6} md={4}>
+              <AreaDropDown
+                selectedArea={selectedValues.area}
+                onAreaChange={(value) => handleValueChange('area', value)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <MapDropDown
+                selectedArea={selectedValues.area}
+                selectedMap={selectedValues.map}
+                onMapChange={(value) => handleValueChange('map', value)}
+              />
+            </Grid>
+          </>
+        )}
+
         <Grid item xs={12}>
           <FormControlLabel
             control={
@@ -64,6 +107,19 @@ const HomePage = () => {
             label="Lazy Rotation?"
           />
         </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={selectedValues.bossing}
+                onChange={handleBossingChange}
+                color="primary"
+              />
+            }
+            label="Bossing Mode"
+          />
+        </Grid>
+
         {selectedValues.class && (
           <Grid item xs={12}>
             <YouTubeLink selectedValues={selectedValues} />
