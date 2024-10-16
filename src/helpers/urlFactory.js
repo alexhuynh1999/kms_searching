@@ -1,24 +1,31 @@
 // src/helpers/urlFactory.js
-const urlFactory = (classValue, locationValue, isLazy) => {
-    let query = "메이플 ";
+const urlFactory = (boss, className, param1, param2, isLazy) => {
+    let query = `메이플 ${className}`;
+    let url = 'https://www.youtube.com/results?search_query='
 
-    if (classValue && locationValue) {
-        // Both class and location are defined
-        query += `${classValue} ${locationValue}`.trim();
-    } else if (classValue) {
-        // Only class is defined
-        query += `${classValue} 사냥터`.trim();
-    } else {
-        // Default to an empty string
-        query += '';
+
+    if (boss) {
+        query += param1 + " " + param2;
+        return url + encodeURIComponent(query);
     }
 
-    // Append "뇌빼기" if isLazy is true
+    if (param1) {
+        query = query + ` ${param1}`.trim();
+    }
+
+    if (param2) {
+        query = query + ` ${param2}`.trim();
+    }
+
+    if (!param1 && !param2) {
+        query = query + ' 사냥터'
+    }
+
     if (isLazy) {
         query += ' 뇌빼기';
     }
 
-    return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+    return url + encodeURIComponent(query);
 };
 
 export default urlFactory;
