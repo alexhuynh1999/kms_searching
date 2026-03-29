@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kms_searching/static/css/main.9e9facf5.css",
+    "main.js": "/kms_searching/static/js/main.efd86eba.js",
+    "index.html": "/kms_searching/index.html",
+    "main.9e9facf5.css.map": "/kms_searching/static/css/main.9e9facf5.css.map",
+    "main.efd86eba.js.map": "/kms_searching/static/js/main.efd86eba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9e9facf5.css",
+    "static/js/main.efd86eba.js"
+  ]
+}
