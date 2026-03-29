@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MapleSearch - Training Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ff9a5e",
+              "on-tertiary": "#ecffdb",
+              "inverse-primary": "#f98c49",
+              "surface-container": "#ffeadc",
+              "on-background": "#4e2905",
+              "surface-variant": "#ffdcc3",
+              "tertiary-dim": "#255f00",
+              "primary-fixed": "#ffae81",
+              "primary-container": "#ffae81",
+              "error": "#aa371c",
+              "primary-dim": "#893c00",
+              "surface-dim": "#ffd1af",
+              "secondary-fixed-dim": "#a8dbff",
+              "tertiary-fixed-dim": "#93dc6a",
+              "secondary": "#006690",
+              "on-primary-fixed": "#461b00",
+              "inverse-on-surface": "#ba967b",
+              "surface": "#fff8f5",
+              "outline": "#a27046",
+              "surface-container-low": "#fff1e9",
+              "on-primary": "#fff7f5",
+              "on-secondary-fixed-variant": "#00628b",
+              "on-surface-variant": "#83552d",
+              "outline-variant": "#e0a678",
+              "surface-container-highest": "#ffdcc3",
+              "surface-tint": "#9c4600",
+              "tertiary-container": "#a0eb77",
+              "inverse-surface": "#1b0a00",
+              "tertiary": "#2b6d00",
+              "on-secondary-fixed": "#004462",
+              "on-tertiary-fixed-variant": "#256100",
+              "on-primary-fixed-variant": "#743200",
+              "on-secondary-container": "#00577d",
+              "surface-bright": "#fff8f5",
+              "secondary-dim": "#00597f",
+              "error-container": "#fa7150",
+              "error-dim": "#821a01",
+              "on-primary-container": "#662b00",
+              "on-error": "#fff7f6",
+              "surface-container-lowest": "#ffffff",
+              "on-error-container": "#671200",
+              "on-tertiary-fixed": "#174100",
+              "secondary-fixed": "#c8e6ff",
+              "on-secondary": "#f5f9ff",
+              "tertiary-fixed": "#a0eb77",
+              "on-surface": "#4e2905",
+              "background": "#fff8f5",
+              "on-tertiary-container": "#215600",
+              "surface-container-high": "#ffe3d0",
+              "primary": "#9c4600",
+              "secondary-container": "#c8e6ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #fff8f5;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(255, 174, 129, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(160, 235, 119, 0.1) 0px, transparent 50%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 248, 245, 0.7);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-mesh font-body text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fff8f5]/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(78,41,5,0.06)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#9c4600] dark:text-[#ffae81]" style="font-variation-settings: 'FILL' 1;">park</span>
+<span class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-2xl italic text-[#9c4600] dark:text-[#ffae81]">MapleSearch</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#4e2905]/60 hover:scale-105 transition-transform duration-200 active:scale-95">settings</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Screen Header -->
+<div class="space-y-2">
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Training Mode Search</h1>
+<p class="text-on-surface-variant font-medium">Customize your hunt parameters below.</p>
+</div>
+<!-- Toggle Switch: Training vs Bossing -->
+<div class="bg-surface-container-low p-2 rounded-full flex gap-2">
+<button class="flex-1 py-3 px-6 rounded-full bg-gradient-to-br from-primary to-primary-container text-white font-bold shadow-lg transition-all active:scale-95">
+                Training
+            </button>
+<button class="flex-1 py-3 px-6 rounded-full text-on-surface-variant font-bold hover:bg-surface-container transition-colors">
+                Bossing
+            </button>
+</div>
+<!-- Parameter Grid -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Parameter 01: Class -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_10px_30px_rgba(78,41,5,0.04)] space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">swords</span>
+</div>
+<div>
+<span class="block text-xs font-bold uppercase tracking-widest text-outline">Parameter_01</span>
+<h3 class="font-headline text-lg font-bold">Class Selection</h3>
+</div>
+</div>
+<select class="w-full bg-surface-container-low border-none rounded-full px-6 py-4 text-on-surface font-medium focus:ring-2 focus:ring-secondary/20 appearance-none">
+<option>전사 (Warrior)</option>
+<option>궁수 (Archer)</option>
+<option>마법사 (Magician)</option>
+<option>도적 (Thief)</option>
+<option>해적 (Pirate)</option>
+</select>
+</div>
+<!-- Parameter 02 & 03: Area & Map -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Area -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_10px_30px_rgba(78,41,5,0.04)] space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+<div>
+<span class="block text-xs font-bold uppercase tracking-widest text-outline">Parameter_02</span>
+<h3 class="font-headline text-lg font-bold">Area</h3>
+</div>
+</div>
+<select class="w-full bg-surface-container-low border-none rounded-full px-6 py-4 text-on-surface font-medium focus:ring-2 focus:ring-secondary/20 appearance-none">
+<option>숲 (Forest)</option>
+<option>성 (Castle)</option>
+<option>사막 (Desert)</option>
+<option>눈산 (Snow Mountain)</option>
+</select>
+</div>
+<!-- Map -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_10px_30px_rgba(78,41,5,0.04)] space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<div>
+<span class="block text-xs font-bold uppercase tracking-widest text-outline">Parameter_03</span>
+<h3 class="font-headline text-lg font-bold">Map</h3>
+</div>
+</div>
+<select class="w-full bg-surface-container-low border-none rounded-full px-6 py-4 text-on-surface font-medium focus:ring-2 focus:ring-secondary/20 appearance-none">
+<option>속삭임의 숲 (Forest of Whispers)</option>
+<option>고요한 통로 (Silent Path)</option>
+<option>깊은 오솔길 (Deep Trail)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Terminal Preview Box -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
+<div class="relative bg-inverse-surface rounded-xl p-6 shadow-2xl overflow-hidden">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffae81]"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
+<span class="ml-auto text-[10px] font-bold text-outline uppercase tracking-widest">Live Query Preview</span>
+</div>
+<div class="font-mono text-xl text-primary-fixed-dim tracking-tight">
+<span class="text-tertiary-fixed-dim mr-2">&gt;</span>
+<span class="animate-pulse border-r-2 border-primary-fixed-dim pr-1">전사 숲 속삭임의 숲 공략</span>
+</div>
+</div>
+</div>
+<!-- Visual Anchor: Map Illustration Card -->
+<div class="bg-surface-container rounded-xl overflow-hidden h-48 relative shadow-lg">
+<img alt="Whimsical pixel-art style forest map" class="w-full h-full object-cover mix-blend-overlay" data-alt="enchanted whimsical forest with glowing green leaves and warm golden sunlight filtering through trees in a soft illustrative style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpcySbhh2qYhRLRBaKrKIj8_j-nYGGlK0edo-YEpdULCM-aP52MH6_g6dYT87Dbg0_-vcd84fpHyJZnFq1bBmnbFlQl1kNW0-I6-zw_kWUc0i0C94hAxHTem00KNbAP1anMzIyUcYRQusnnSDX8G9PaoCYbVjioMWLkbv7cwQxSrsup6mmnp7awW1aaxPsCCCPPZfYWGVYj1aeNC5MdHBBHBkUTn4jUItd4YfGBWhq-W4te_DD7m6tzvJEB9e8ZTpCZuyn-EwN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container/80 to-transparent flex items-end p-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">explore</span>
+<div>
+<h4 class="font-bold text-lg">Visualizing Route</h4>
+<p class="text-sm opacity-80">Calculating optimal rotation for '전사' class...</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Search Button Container -->
+<div class="pt-4 pb-12">
+<button class="w-full py-6 rounded-full bg-gradient-to-br from-primary to-primary-container text-white font-headline text-xl font-black tracking-widest shadow-[0_20px_40px_rgba(156,70,0,0.3)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-4">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">search</span>
+                SEARCH YOUTUBE
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full rounded-t-[3rem] z-50 pb-safe bg-[#fff8f5]/90 dark:bg-[#1a1a1a]/90 backdrop-blur-lg shadow-[0_-10px_30px_rgba(78,41,5,0.08)]">
+<div class="flex justify-around items-end px-4 h-24 w-full">
+<div class="flex flex-col items-center justify-center text-[#4e2905]/50 dark:text-[#fff]/50 p-4 hover:text-[#9c4600] transition-colors">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#4e2905]/50 dark:text-[#fff]/50 p-4 hover:text-[#9c4600] transition-colors">
+<span class="material-symbols-outlined" data-icon="swords">swords</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#9c4600] to-[#ffae81] text-white rounded-full p-4 shadow-lg transform -translate-y-2 active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#4e2905]/50 dark:text-[#fff]/50 p-4 hover:text-[#9c4600] transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+</body></html>

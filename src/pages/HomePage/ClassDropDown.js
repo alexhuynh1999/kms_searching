@@ -5,10 +5,14 @@ import { classes } from '../../constants/classes';
 const ClassDropDown = ({ selectedClass, onClassChange }) => {
   return (
     <SearchableDropDown
-      label="Class"
+      label="Class Selection"
       value={selectedClass}
       onChange={onClassChange}
       options={Object.keys(classes)}
+      iconName="swords"
+      iconBgClass="bg-secondary-container"
+      iconColorClass="text-secondary"
+      containerColor="bg-surface-container-lowest"
     />
   );
 };

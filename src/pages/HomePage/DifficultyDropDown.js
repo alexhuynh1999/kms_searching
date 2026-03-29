@@ -11,6 +11,10 @@ const DifficultyDropDown = ({ selectedBoss, selectedDifficulty, onDifficultyChan
       value={selectedDifficulty}
       onChange={onDifficultyChange}
       options={difficulties}
+      iconName="warning"
+      iconBgClass="bg-surface-container-high"
+      iconColorClass="text-on-surface-variant"
+      containerColor="bg-surface-container-lowest"
     />
   );
 };

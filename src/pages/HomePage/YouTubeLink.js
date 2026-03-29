@@ -1,5 +1,4 @@
 import React from 'react';
-import { Typography, Link } from '@mui/material';
 import { classes } from '../../constants/classes';
 import { maps } from '../../constants/maps';
 import { difficulties } from '../../constants/difficulties'
@@ -7,7 +6,7 @@ import { bosses } from '../../constants/bosses'
 import urlFactory from '../../helpers/urlFactory';
 
 const YouTubeLink = ({ selectedValues }) => {
-  const { class: selectedClass, area: selectedArea, map: selectedMap, lazy: lazy, boss: boss, difficulty: difficulty } = selectedValues;
+  const { class: selectedClass, area: selectedArea, map: selectedMap, lazy, boss, difficulty } = selectedValues;
 
   const classTranslation = classes[selectedClass] || '';
   const mapTranslation = selectedMap ? maps[selectedArea][selectedMap] : '';
@@ -15,19 +14,6 @@ const YouTubeLink = ({ selectedValues }) => {
   const isClassSelected = Boolean(selectedClass);
   const difficulty_translation = difficulties[difficulty]
   const boss_transl = bosses[boss]
-
-  const getLinkText = () => {
-    if (boss) {
-      return `${selectedClass} ${difficulty} ${boss}`
-    }
-    if (selectedMap) {
-      return `${selectedClass} at ${selectedMap}`;
-    }
-    if (selectedArea) {
-      return `${selectedClass} at ${selectedArea}`;
-    }
-    return `${selectedClass} Training`;
-  };
 
   const getURL = () => {
     if (boss) {
@@ -39,16 +25,15 @@ const YouTubeLink = ({ selectedValues }) => {
   return (
     <>
       {isClassSelected && (
-        <>
-          <Typography variant="h6" sx={{ mt: 2 }}>YouTube Link:</Typography>
-          <Link
-            href={getURL()}
-            target="_blank"
-            rel="noopener"
-          >
-            {getLinkText()}
-          </Link>
-        </>
+        <a
+          href={getURL()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full py-6 rounded-full bg-primary text-white dark:bg-gradient-to-br dark:from-[#7fd7fe] dark:to-[#aae5ff] dark:text-[#0c0d1d] font-headline text-xl font-black tracking-widest shadow-[0_20px_40px_rgba(156,70,0,0.3)] dark:shadow-[0_20px_40px_rgba(127,215,254,0.15)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-4 no-underline"
+        >
+          <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>search</span>
+          SEARCH YOUTUBE
+        </a>
       )}
     </>
   );

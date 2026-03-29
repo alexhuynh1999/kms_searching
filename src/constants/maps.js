@@ -1,6 +1,5 @@
 // src/constants/maps.js
 export const maps = {
-    '': {},
     'Vanishing Journey': {
         'Rock Zone': '암석의 영토',
         'Fire Zone': '화염의 영토',

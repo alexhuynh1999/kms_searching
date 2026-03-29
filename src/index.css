@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.bg-mesh {
+    @apply bg-[#80D8FF] dark:bg-[#0c0d1d];
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 174, 129, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(160, 235, 119, 0.1) 0px, transparent 50%),
+        linear-gradient(180deg, #63ccff 0%, #80D8FF 60%, #e0f4ff 100%);
+}
+.dark .bg-mesh {
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(127, 215, 254, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(145, 247, 142, 0.05) 0px, transparent 50%);
+}
+
+.glass-panel {
+    @apply bg-[#80D8FF]/70 dark:bg-[#0c0d1d]/60;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.maple-bg-pattern {
+    background-image: radial-gradient(circle at 2px 2px, #e0a678 1px, transparent 0);
+    background-size: 32px 32px;
+    opacity: 0.15;
+}
+
+/* Base styles for body to ensure full screen min height */
+    
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}

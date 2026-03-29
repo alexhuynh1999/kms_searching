@@ -9,6 +9,10 @@ const AreaDropDown = ({ selectedArea, onAreaChange }) => {
       value={selectedArea}
       onChange={onAreaChange}
       options={Object.keys(maps)}
+      iconName="landscape"
+      iconBgClass="bg-tertiary-container"
+      iconColorClass="text-tertiary"
+      containerColor="bg-surface-container-lowest"
     />
   );
 };

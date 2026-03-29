@@ -9,6 +9,10 @@ const BossDropDown = ({ selectedBoss, onBossChange }) => {
       value={selectedBoss}
       onChange={onBossChange}
       options={Object.keys(bosses)}
+      iconName="skull"
+      iconBgClass="bg-error-container"
+      iconColorClass="text-error"
+      containerColor="bg-surface-container-lowest"
     />
   );
 };
