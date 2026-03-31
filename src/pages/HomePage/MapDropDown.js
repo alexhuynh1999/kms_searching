@@ -3,7 +3,7 @@ import SearchableDropDown from '../../components/SearchableDropDown';
 import { maps } from '../../constants/maps';
 
 const MapDropDown = ({ selectedArea, selectedMap, onMapChange }) => {
-  const mapOptions = selectedArea ? Object.keys(maps[selectedArea]) : [];
+  const mapOptions = selectedArea ? Object.keys(maps[selectedArea].maps) : [];
 
   return (
     <SearchableDropDown

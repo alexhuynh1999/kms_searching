@@ -9,11 +9,11 @@ const YouTubeLink = ({ selectedValues }) => {
   const { class: selectedClass, area: selectedArea, map: selectedMap, lazy, boss, difficulty } = selectedValues;
 
   const classTranslation = classes[selectedClass] || '';
-  const mapTranslation = selectedMap ? maps[selectedArea][selectedMap] : '';
-  const areaTranslation = selectedArea ? maps[selectedArea].name : ''; // Assuming there's a name field for the area
+  const mapTranslation = selectedMap ? maps[selectedArea].maps[selectedMap] : '';
+  const areaTranslation = selectedArea ? maps[selectedArea].kr : '';
   const isClassSelected = Boolean(selectedClass);
   const difficulty_translation = difficulties[difficulty]
-  const boss_transl = bosses[boss]
+  const boss_transl = bosses[boss]?.kr || ''
 
   const getURL = () => {
     if (boss) {

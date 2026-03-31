@@ -45,4 +45,5 @@ export const classes = {
     Lara: '라라',
     Kinesis: '키네시스',
     Zero: '제로',
+    Ren: '렌'
 }

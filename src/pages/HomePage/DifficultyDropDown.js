@@ -1,9 +1,9 @@
 import React from 'react';
 import SearchableDropDown from '../../components/SearchableDropDown';
-import { bossDifficulties } from '../../constants/bossDifficulties';
+import { bosses } from '../../constants/bosses';
 
 const DifficultyDropDown = ({ selectedBoss, selectedDifficulty, onDifficultyChange }) => {
-  const difficulties = bossDifficulties[selectedBoss] || []
+  const difficulties = bosses[selectedBoss]?.difficulties || []
 
   return (
     <SearchableDropDown
