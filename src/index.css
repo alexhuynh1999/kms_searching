@@ -32,8 +32,14 @@
 }
 
 /* Base styles for body to ensure full screen min height */
-    
-
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+}
 @layer utilities {
     .no-scrollbar::-webkit-scrollbar {
         display: none;

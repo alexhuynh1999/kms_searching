@@ -51,10 +51,10 @@ const HomePage = () => {
       <main className="pt-24 px-6 max-w-2xl mx-auto space-y-8 pb-12">
         <header className="space-y-2">
           <h1 className="font-headline text-3xl font-extrabold tracking-tight text-on-surface dark:text-[#e5e3fb]">
-            {selectedValues.bossing ? 'Bossing Mode Search' : 'Training Mode Search'}
+            {selectedValues.bossing ? 'Bossing Search' : 'Training Search'}
           </h1>
           <p className="text-on-surface-variant dark:text-[#a5a3d0] font-medium">
-            Customize your {selectedValues.bossing ? 'encounter' : 'hunt'} parameters below.
+            Customize your {selectedValues.bossing ? 'bossing' : 'training'} parameters below.
           </p>
         </header>
 
@@ -62,22 +62,20 @@ const HomePage = () => {
         <div className="bg-surface-container-low dark:bg-[#1a1b3b] p-2 rounded-full flex gap-2 shadow-sm">
           <button
             onClick={() => setBossingMode(false)}
-            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
-              !selectedValues.bossing
-                ? 'bg-primary text-white dark:bg-[#7fd7fe] dark:text-[#0c0d1d] shadow-lg active:scale-95'
-                : 'bg-surface-container-highest text-on-surface-variant hover:bg-surface-container dark:bg-[#252650] dark:text-[#a5a3d0] dark:hover:bg-[#323366]'
-            }`}
+            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 ${!selectedValues.bossing
+              ? 'bg-primary text-white dark:bg-[#7fd7fe] dark:text-[#0c0d1d] shadow-lg active:scale-95'
+              : 'bg-surface-container-highest text-on-surface-variant hover:bg-surface-container dark:bg-[#252650] dark:text-[#a5a3d0] dark:hover:bg-[#323366]'
+              }`}
           >
             <span className="material-symbols-outlined text-sm">fitness_center</span>
             Training
           </button>
           <button
             onClick={() => setBossingMode(true)}
-            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
-              selectedValues.bossing
-                ? 'bg-primary text-white dark:bg-[#7fd7fe] dark:text-[#0c0d1d] shadow-lg active:scale-95'
-                : 'bg-surface-container-highest text-on-surface-variant hover:bg-surface-container dark:bg-[#252650] dark:text-[#a5a3d0] dark:hover:bg-[#323366]'
-            }`}
+            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 ${selectedValues.bossing
+              ? 'bg-primary text-white dark:bg-[#7fd7fe] dark:text-[#0c0d1d] shadow-lg active:scale-95'
+              : 'bg-surface-container-highest text-on-surface-variant hover:bg-surface-container dark:bg-[#252650] dark:text-[#a5a3d0] dark:hover:bg-[#323366]'
+              }`}
           >
             <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>swords</span>
             Bossing
@@ -115,14 +113,13 @@ const HomePage = () => {
                   onMapChange={(value) => handleValueChange('map', value)}
                 />
               </div>
-              <button 
+              <button
                 onClick={toggleLazy}
                 disabled={selectedValues.bossing}
-                className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors border-2 ${
-                  selectedValues.lazy 
-                  ? 'bg-primary border-primary text-white shadow-md dark:bg-[#7fd7fe] dark:border-[#7fd7fe] dark:text-[#0c0d1d]' 
+                className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-colors border-2 ${selectedValues.lazy
+                  ? 'bg-primary border-primary text-white shadow-md dark:bg-[#7fd7fe] dark:border-[#7fd7fe] dark:text-[#0c0d1d]'
                   : 'bg-surface-container-low border-transparent text-on-surface-variant hover:bg-surface-container dark:bg-[#1a1b3b] dark:text-[#a5a3d0] dark:hover:bg-[#252650]'
-                }`}
+                  }`}
               >
                 <span className="material-symbols-outlined">{selectedValues.lazy ? 'check_box' : 'check_box_outline_blank'}</span>
                 Lazy Rotation (뇌빼기)
