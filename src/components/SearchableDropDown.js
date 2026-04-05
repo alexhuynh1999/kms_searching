@@ -4,10 +4,20 @@ const SearchableDropDown = ({ label, value, onChange, options, iconName = 'arrow
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const dropdownRef = useRef(null);
+    const listContainerRef = useRef(null);
 
     const filteredOptions = options.filter(option => 
         option.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    useEffect(() => {
+        if (isOpen && listContainerRef.current) {
+            const selectedEl = listContainerRef.current.querySelector('.selected-option-scroll-target');
+            if (selectedEl) {
+                selectedEl.scrollIntoView({ block: 'center' });
+            }
+        }
+    }, [isOpen]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -59,14 +69,14 @@ const SearchableDropDown = ({ label, value, onChange, options, iconName = 'arrow
                 </div>
 
                 {isOpen && (
-                    <div className="absolute z-50 w-full mt-2 bg-surface-container-highest dark:bg-[#1a1b3b] rounded-2xl shadow-xl border border-outline-variant/20 dark:border-white/5 overflow-hidden max-h-60 overflow-y-auto no-scrollbar">
+                    <div ref={listContainerRef} className="absolute z-50 w-full mt-2 bg-surface-container-highest dark:bg-[#1a1b3b] rounded-2xl shadow-xl border border-outline-variant/20 dark:border-white/5 overflow-hidden max-h-60 overflow-y-auto no-scrollbar">
                         {filteredOptions.length > 0 ? (
                             <ul className="py-2">
                                 {filteredOptions.map((option, index) => (
                                     <li 
                                         key={index}
                                         onClick={() => handleSelectOption(option)}
-                                        className={`px-6 py-3 cursor-pointer transition-colors hover:bg-[#FF914B]/15 hover:text-[#9c4600] dark:hover:bg-[#7fd7fe]/20 dark:hover:text-[#7fd7fe] text-on-surface dark:text-[#e5e3fb] font-medium ${value === option ? 'bg-[#FF914B]/20 text-[#9c4600] dark:bg-[#7fd7fe]/10 dark:text-[#7fd7fe] font-bold' : ''}`}
+                                        className={`px-6 py-3 cursor-pointer transition-colors hover:bg-[#FF914B]/15 hover:text-[#9c4600] dark:hover:bg-[#7fd7fe]/20 dark:hover:text-[#7fd7fe] text-on-surface dark:text-[#e5e3fb] font-medium ${value === option ? 'selected-option-scroll-target bg-[#FF914B]/20 text-[#9c4600] dark:bg-[#7fd7fe]/10 dark:text-[#7fd7fe] font-bold' : ''}`}
                                     >
                                         {option}
                                     </li>
